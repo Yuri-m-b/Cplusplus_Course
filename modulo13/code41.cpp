@@ -23,7 +23,8 @@ void FindPrimes(unsigned int start,
     for(unsigned int x = start; x <= end; x += 2){
     
         // If a modulus is 0 we know it isn't prime
-        for(unsigned int y = 2; y < x; y++){
+        for(unsigned int y = 2; y < x; y++)
+        {
             if((x % y) == 0){
                 break;
             } else if((y + 1) == x){

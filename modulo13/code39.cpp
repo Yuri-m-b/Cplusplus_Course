@@ -60,7 +60,8 @@ void ExecuteThread(int id){
 }
 // ----- END SIMPLE THREAD EXAMPLE ----- */
  
-string GetTime(){
+string GetTime()
+{
     auto nowTime = chrono::system_clock::now();
     time_t sleepTime = chrono::system_clock::to_time_t(nowTime);
     return ctime(&sleepTime);
@@ -88,19 +89,16 @@ void GetMoney(int id, double withdrawal)
     
     this_thread::sleep_for(chrono::seconds(3));
     
-    cout << id << 
-            " tries to withdrawal $" <<
-            withdrawal << " on " <<
-            GetTime() << endl;
+    cout << id << " tries to withdrawal $" << withdrawal << " on " << GetTime() << endl;
             
-    if((acctBalance - withdrawal) >= 0){
+    if((acctBalance - withdrawal) >= 0)
+    {
         acctBalance -= withdrawal;
-        cout << "New Account Balance is $" <<
-                acctBalance << endl;
-    } else {
-        cout << "Not Enough Money in Account\n";
-        cout << "Current Balance is $" <<
-                acctBalance << endl;
+        cout << "New Account Balance is $" << acctBalance << endl;
+    } 
+    else 
+    {
+        cout << "Not Enough Money in Account\n"; cout << "Current Balance is $" << acctBalance << endl;
     }
     // acctLock.unlock();
 }
@@ -127,11 +125,13 @@ int main()
     // order
     thread threads[10];
     
-    for(int i = 0; i < 10; ++i){
+    for(int i = 0; i < 10; ++i)
+    {
         threads[i] = thread(GetMoney, i, 15);
     }
     
-    for(int i = 0; i < 10; ++i){
+    for(int i = 0; i < 10; ++i)
+    {
         threads[i].join();
     }
     return 0;
